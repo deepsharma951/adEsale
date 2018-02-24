@@ -9,4 +9,10 @@ public class UserService {
 		
 		return res;
 	}
+	
+	public Integer login(String username,String password){
+		
+		
+		return 0;
+	}
 }  
