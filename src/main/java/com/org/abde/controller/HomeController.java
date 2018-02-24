@@ -44,7 +44,9 @@ System.out.println("here in controllers");
 public String listing(){
 	List<ListingFlipkart> listing=listingService.listAllListing();
 	for (ListingFlipkart listingFlipkart : listing) {
-		System.out.println(listingFlipkart.getErrors());
+		System.out.println("listingFlipkart"+listingFlipkart);
+		System.out.println("details"+listingFlipkart.getListing_status());
+		System.out.println(listingFlipkart.getActual_stock_count());
 	}
 	
 	//System.out.println(listing.getErrorCode()+"  "+listing.getErrors());

@@ -22,15 +22,12 @@ import org.springframework.util.StopWatch;
 @Aspect
 public class TimeLoggingAspect {
 	private final Log log = LogFactory.getLog(this.getClass());
-	@Around("execution(* com.org.abde.service.*.*(..))")
+	@Around("execution(* com.org.abde.*.*.*(..)) || execution(* com.org.abde.listing.flipkart.*.*.*(..))")
 	public Object logaround(ProceedingJoinPoint point) throws Throwable{
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-
 		Object retVal = point.proceed();
-
 		stopWatch.stop();
-
 		StringBuffer logMessage = new StringBuffer();
 		logMessage.append(point.getTarget().getClass().getName());
 		logMessage.append(".");
@@ -57,7 +54,7 @@ public class TimeLoggingAspect {
 		
 	}
 	@AfterReturning(
-		      pointcut = "execution(* com.org.abde.service.*.*(..))",
+		      pointcut = "execution(* com.org.abde.service.*.*(..)) || execution(* com.org.abde.listing.flipkart.*.*.*(..))",
 		      returning= "result")
 		   public void logAfterReturning(JoinPoint point, Object result) {
 			StringBuffer logMessage = new StringBuffer();
@@ -71,7 +68,7 @@ public class TimeLoggingAspect {
 			log.info(logMessage.toString());
 		   }
 	@AfterThrowing(
-		      pointcut = "execution(* com.org.abde.service.*.*(..))",
+		      pointcut = "execution(* com.org.abde.service.*.*(..)) || execution(* com.org.abde.listing.flipkart.*.*.*(..))",
 		      throwing= "error")
 		    public void logAfterThrowing(JoinPoint point, Throwable error) {
 

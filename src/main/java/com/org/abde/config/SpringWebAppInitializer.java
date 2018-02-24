@@ -12,7 +12,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer  {
+public class SpringWebAppInitializer implements WebApplicationInitializer{/* extends AbstractAnnotationConfigDispatcherServletInitializer  {
 
 
     @Override
@@ -30,9 +30,9 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 	@Override
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
-	}
+	}*/
 	
-	/*public void onStartup(ServletContext ctx) throws ServletException {
+	public void onStartup(ServletContext ctx) throws ServletException {
 	AnnotationConfigWebApplicationContext  context=new AnnotationConfigWebApplicationContext();
 	context.register(ApplicationContextConfig.class);
 	context.setServletContext(ctx);
@@ -43,7 +43,7 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 	servlet.setLoadOnStartup(1);
 	
 	ctx.addListener(new ContextLoaderListener(context));
-}*/
+}
 	
 	
 

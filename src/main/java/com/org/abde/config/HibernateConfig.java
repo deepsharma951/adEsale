@@ -68,7 +68,7 @@ public class HibernateConfig {
 		 datasource.setPassword(env.getProperty("mysql.password"));
 		 
 		 System.out.println("Class name =================================================== "+env.getProperty("mysql.driver"));
-		 System.out.println("URL ========================================================== "+env.getProperty("mysql.driver"));
+		 System.out.println("URL ========================================================== "+env.getProperty("mysql.url"));
 		 System.out.println("UserName ========================================================== "+env.getProperty("mysql.user"));
 		 System.out.println("Password ========================================================== "+env.getProperty("mysql.password"));
 		 
