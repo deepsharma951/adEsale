@@ -53,11 +53,11 @@
 				<td><springForm:input path="address" /></td>
 				<td><springForm:errors path="address" cssClass="error" /></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td>Age:</td>
 				<td><springForm:input path="age" /></td>
 				<td><springForm:errors path="age" cssClass="error" /></td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<td>Gender:</td>
 				<td><springForm:select path="gender">
@@ -67,11 +67,11 @@
 					</springForm:select></td>
 				<td><springForm:errors path="gender" cssClass="error" /></td>
 			</tr>
-			<tr>
+			 <tr>
 				<td>Birthday:</td>
-				<td><springForm:input path="birthday" placeholder="MM/dd/yyyy"/></td>
+				<td><springForm:input  path="birthday" placeholder="MM/dd/yyyy"/></td>
 				<td><springForm:errors path="birthday" cssClass="error" /></td>
-			</tr>
+			</tr> 
 			<tr>
 				<td>Phone:</td>
 				<td><springForm:input path="phone" /></td>

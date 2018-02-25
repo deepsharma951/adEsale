@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.org.abde.beans.User;
 import com.org.abde.listing.flipkart.model.ListingFlipkart;
 import com.org.abde.listing.flipkart.service.ListingService;
+import com.org.abde.service.LoginService;
 import com.org.abde.service.UserService;
 
 @Controller
@@ -29,6 +30,10 @@ public class HomeController {
 
 	@Autowired
 	ListingService listingService;
+	
+
+	@Autowired
+	LoginService loginService;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -47,6 +52,7 @@ public class HomeController {
 			return "register";
 		}
 		logger.info("Returning home.jsp page");
+		loginService.saveOrUpdate(user);		
 		model.addAttribute("user", user);
 		
 		return "home";

@@ -29,24 +29,12 @@ public class HibernateConfig {
 	   public LocalSessionFactoryBean getSessionFactory() {
 		 LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		 sessionFactory.setDataSource(getDataSource());
-		 sessionFactory.setPackagesToScan(new String [] {"com.org.abde.listing.flipkart.model"});
+		 sessionFactory.setPackagesToScan(new String [] {"com.org.abde.listing.flipkart.model","com.org.abde.beans"});
 		 sessionFactory.setHibernateProperties(hibernateProperties());
 		 System.out.println("Session =================================================== "+sessionFactory.toString());
 		 return sessionFactory;
 		 
-	     /* LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();	     
-	      // Setting Hibernate properties
-	       * 	      // Setting C3P0 properties
-	      props.put(C3P0_MIN_SIZE, env.getProperty("hibernate.c3p0.min_size"));
-	      props.put(C3P0_MAX_SIZE, env.getProperty("hibernate.c3p0.max_size"));
-	      props.put(C3P0_ACQUIRE_INCREMENT, 
-	            env.getProperty("hibernate.c3p0.acquire_increment"));
-	      props.put(C3P0_TIMEOUT, env.getProperty("hibernate.c3p0.timeout"));
-	      props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
-
-	      factoryBean.setHibernateProperties(props);
-	      factoryBean.setPackagesToScan("com.org.abde.listing.flipkart.model");
-	      return factoryBean;*/
+	     
 	   }
 	
 	@Bean

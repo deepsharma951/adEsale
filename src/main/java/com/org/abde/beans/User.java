@@ -1,24 +1,36 @@
 package com.org.abde.beans;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.org.abde.validator.Phone;
 
 @Entity
-public class User {
+@Table(name= "User")
+public class User implements Serializable {
+	
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3443831110839030853L;
+
 @Id
+@GeneratedValue(strategy=GenerationType.AUTO)
 private int id;
 
 @Size(min=2, max=30) 
@@ -45,19 +57,18 @@ private Gender gender;
 @NotNull @NotEmpty
 private String  address;
 
-@NotNull @Min(18) @Max(100)
-private int age;
+/*@NotNull @Min(18) @Max(100)
+private int age;*/
 
 
-@DateTimeFormat(pattern="MM/dd/yyyy")
-@NotNull @Past
-private Date birthday;
+@NotNull
+private String birthday;
 
-public Date getBirthday() {
+public String getBirthday() {
 	return birthday;
 }
-public void setBirthday(Date birthday) {
-	this.birthday = birthday;
+public void setBirthday(String birthday) {
+	this.birthday =birthday;
 }
 public enum Gender {
 	MALE, FEMALE
@@ -70,18 +81,13 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public int getAge() {
+/*public int getAge() {
 	return age;
 }
 public void setAge(int age) {
 	this.age = age;
-}
-public Date getDate() {
-	return birthday;
-}
-public void setDate(Date date) {
-	this.birthday = date;
-}
+}*/
+
 public String getUsername() {
 	return username;
 }
