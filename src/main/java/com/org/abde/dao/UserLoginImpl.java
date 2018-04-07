@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -51,5 +52,23 @@ public class UserLoginImpl implements UserLoginDao{
 	public void deleteUser(long id) {
 		User user=(User) getSessionFactory().get(User.class,id);	
 		getSessionFactory().delete(user);
+	}
+
+
+	@Override
+	public User findByusernameDao(String username,String password) {
+		System.out.println("calling findByusernameDao username"+username+" password->"+password);
+		Criteria criteria = getSessionFactory().createCriteria(User.class);
+		  criteria.add(Restrictions.eq("username", username));
+		  criteria.add(Restrictions.eq("password", password));
+		  List<User> userList=criteria.list();
+		  System.out.println(userList.size());
+		  if(userList.size()>0) {
+		  System.out.println("returning list");
+		  return (User) criteria.list().get(0);
+		  }
+		  return null;
+		  
+		
 	}
 }

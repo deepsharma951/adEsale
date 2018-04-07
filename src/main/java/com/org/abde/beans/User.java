@@ -52,7 +52,7 @@ private String phone;
 private String email;
 
 @NotNull 
-private Gender gender;
+private String gender;
 
 @NotNull @NotEmpty
 private String  address;
@@ -125,14 +125,20 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
-public Gender getGender() {
+/*public Gender getGender() {
 	return gender;
 }
 public void setGender(Gender gender) {
 	this.gender = gender;
-}
+}*/
 public String getAddress() {
 	return address;
+}
+public String getGender() {
+	return gender;
+}
+public void setGender(String gender) {
+	this.gender = gender;
 }
 public void setAddress(String address) {
 	this.address = address;

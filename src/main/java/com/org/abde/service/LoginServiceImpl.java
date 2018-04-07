@@ -50,4 +50,12 @@ public class LoginServiceImpl implements LoginService {
 		
 	}
 
+
+
+
+	@Override
+	public User findByusername(String username,String password) {
+		// TODO Auto-generated method stub
+		return userLoginDao.findByusernameDao(username,password);	}
+
 }

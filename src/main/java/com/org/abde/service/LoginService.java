@@ -9,4 +9,5 @@ public interface LoginService {
 	long saveOrUpdate(User user);
 	User findUserByID(int id);
 	void deleteUser(long id);
+	User findByusername(String username, String password);
 }

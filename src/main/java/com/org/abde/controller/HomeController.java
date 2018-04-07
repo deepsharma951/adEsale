@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.org.abde.beans.User;
 import com.org.abde.listing.flipkart.model.ListingFlipkart;
@@ -44,7 +45,7 @@ public class HomeController {
 		model.addAttribute("user", new  User());
 		return "register";
 	}
-
+	
 	@RequestMapping(path = "/save.do", method = RequestMethod.POST)
 	public String register(@Valid User user, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
@@ -58,11 +59,31 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(path = "/register", method = (RequestMethod.GET))
-	public String register() {
-
-		return "register";
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+		logger.info("login",model);
+		model.addAttribute("user", new  User());
+		
+		return "login";
 	}
+	@RequestMapping(path = "/login.do", method = RequestMethod.POST)
+	public String doLogin(User user, Model model) {
+		System.out.println(user.getUsername()+"     ----" +user.getPassword());
+		User listing =loginService.findByusername(user.getUsername(),user.getPassword());
+		if(listing!=null) {
+			//model.addAttribute("status","success");
+			System.out.println("success");
+			return "home";
+		}
+		else {
+			//model.addAttribute("status","fail");
+			System.out.println("fail");
+		}
+		return "login";
+	}
+	
+	
 
 	@RequestMapping(path = "/", method = (RequestMethod.GET))
 	public String home() {

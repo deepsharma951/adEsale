@@ -13,4 +13,6 @@ public interface UserLoginDao {
 	List<User> listAllUser();
 
 	void deleteUser(long id);
+
+	User findByusernameDao(String username, String password);
 }
