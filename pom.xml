@@ -7,7 +7,9 @@
 	<packaging>war</packaging>
 	<properties>
 
-		<org.springframework-version>4.2.4.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.14.RELEASE</org.springframework-version>
+		<org.hibernates-version>4.3.11.Final</org.hibernates-version>
+		
 	</properties>
 	<dependencies>
 
@@ -130,7 +132,20 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.11.Final</version>
+			<version>${org.hibernates-version}</version>
+		</dependency>
+		
+		<!-- validator -->
+		
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
 		</dependency>
 
 	</dependencies>
